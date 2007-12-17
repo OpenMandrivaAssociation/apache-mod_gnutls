@@ -25,7 +25,6 @@ Requires:	apache >= 2.2.0
 BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	apr_memcache-devel
 BuildRequires:	gnutls-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mod_gnutls uses the GnuTLS library to provide SSL v3, TLS 1.0 and TLS 1.1
