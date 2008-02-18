@@ -6,7 +6,7 @@
 Summary:	DSO module for the apache Web server
 Name:		apache-%{mod_name}
 Version:	0.2.0
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Servers
 License:	Apache License
 URL:		http://www.outoforder.cc/projects/apache/mod_gnutls/
