@@ -12,9 +12,9 @@ License:	Apache License
 URL:		http://www.outoforder.cc/projects/apache/mod_gnutls/
 Source0:	http://www.outoforder.cc/downloads/mod_gnutls/%{mod_name}-%{version}.tar.bz2
 Source1:	%{mod_conf}
-Patch0:		mod_gnutls-no_ap_prefix.diff
 Patch1:		mod_gnutls-0.4.2.1-change-module-name.diff
 Patch2:		mod_gnutls-0.4.2.1-fix-linking.diff
+Patch3:		mod_gnutls-0.4.2.1-fix-apr_memcache-test.diff
 Requires(post): gnutls
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
@@ -34,16 +34,11 @@ use OpenSSL.
 
 %prep
 %setup -q -n %{mod_name}-%{version}
-%patch0 -p0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 cp %{SOURCE1} %{mod_conf}
-
-# lib64 fixes
-perl -pi -e "s|/lib\ |/%{_lib}\ |g" m4/apr_memcache.m4
-perl -pi -e "s|/lib\b|/%{_lib}|g" m4/apr_memcache.m4
-perl -pi -e "s|/lib/|/%{_lib}/|g" m4/apr_memcache.m4
 
 # only make the binary
 perl -pi -e "s|^SUBDIRS.*|SUBDIRS = src|g" Makefile.am
@@ -56,7 +51,7 @@ rm -rf autom4te.cache
 
 %configure2_5x \
     --with-apxs=%{_sbindir}/apxs \
-    --with-apr-memcache=%{_prefix}
+    --with-apr-memcache-libs=%{_libdir}
 
 %make
 
