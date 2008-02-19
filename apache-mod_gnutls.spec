@@ -14,6 +14,7 @@ Source0:	http://www.outoforder.cc/downloads/mod_gnutls/%{mod_name}-%{version}.ta
 Source1:	%{mod_conf}
 Patch0:		mod_gnutls-no_ap_prefix.diff
 Patch1:		mod_gnutls-0.4.2.1-change-module-name.diff
+Patch2:		mod_gnutls-0.4.2.1-fix-linking.diff
 Requires(post): gnutls
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
@@ -32,10 +33,10 @@ encryption for Apache HTTPD. It is similar to mod_ssl in purpose, but does not
 use OpenSSL.
 
 %prep
-
 %setup -q -n %{mod_name}-%{version}
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 cp %{SOURCE1} %{mod_conf}
 
