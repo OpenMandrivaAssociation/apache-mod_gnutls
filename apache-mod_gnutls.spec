@@ -6,14 +6,13 @@
 Summary:	DSO module for the apache Web server
 Name:		apache-%{mod_name}
 Version:	0.4.2.1
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Servers
 License:	Apache License
 URL:		http://www.outoforder.cc/projects/apache/mod_gnutls/
 Source0:	http://www.outoforder.cc/downloads/mod_gnutls/%{mod_name}-%{version}.tar.bz2
 Source1:	%{mod_conf}
 Patch1:		mod_gnutls-0.4.2.1-change-module-name.diff
-Patch2:		mod_gnutls-0.4.2.1-fix-linking.diff
 Patch3:		mod_gnutls-0.4.2.1-fix-apr_memcache-test.diff
 Requires(post): gnutls
 Requires(pre): rpm-helper
@@ -35,7 +34,6 @@ use OpenSSL.
 %prep
 %setup -q -n %{mod_name}-%{version}
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
 
 cp %{SOURCE1} %{mod_conf}
