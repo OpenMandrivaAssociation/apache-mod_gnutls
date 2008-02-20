@@ -5,7 +5,7 @@
 
 Summary:	DSO module for the apache Web server
 Name:		apache-%{mod_name}
-Version:	0.4.2.1
+Version:	0.4.3
 Release:	%mkrel 4
 Group:		System/Servers
 License:	Apache License
@@ -13,7 +13,6 @@ URL:		http://www.outoforder.cc/projects/apache/mod_gnutls/
 Source0:	http://www.outoforder.cc/downloads/mod_gnutls/%{mod_name}-%{version}.tar.bz2
 Source1:	%{mod_conf}
 Patch1:		mod_gnutls-0.4.2.1-change-module-name.diff
-Patch3:		mod_gnutls-0.4.2.1-fix-apr_memcache-test.diff
 Requires(post): gnutls
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
@@ -34,7 +33,6 @@ use OpenSSL.
 %prep
 %setup -q -n %{mod_name}-%{version}
 %patch1 -p1
-%patch3 -p1
 
 cp %{SOURCE1} %{mod_conf}
 
@@ -42,11 +40,7 @@ cp %{SOURCE1} %{mod_conf}
 perl -pi -e "s|^SUBDIRS.*|SUBDIRS = src|g" Makefile.am
 
 %build
-#sh autogen.sh
-rm -f configure
-libtoolize --force --copy; aclocal -I m4; autoheader; automake --add-missing --copy --foreign; autoconf
-rm -rf autom4te.cache
-
+autoreconf
 %configure2_5x \
     --with-apxs=%{_sbindir}/apxs \
     --with-apr-memcache-libs=%{_libdir}
