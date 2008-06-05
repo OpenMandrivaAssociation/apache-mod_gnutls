@@ -41,7 +41,7 @@ perl -pi -e "s|^SUBDIRS.*|SUBDIRS = src|g" Makefile.am
 
 %build
 autoreconf
-%configure2_5x \
+%configure2_5x --localstatedir=/var/lib \
     --with-apxs=%{_sbindir}/apxs \
     --with-apr-memcache-libs=%{_libdir}
 
