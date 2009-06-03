@@ -6,7 +6,7 @@
 Summary:	DSO module for the apache Web server
 Name:		apache-%{mod_name}
 Version:	0.5.4
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Servers
 License:	Apache License
 URL:		http://www.outoforder.cc/projects/apache/mod_gnutls/
@@ -15,6 +15,7 @@ Source1:	%{mod_conf}
 Patch0:		mod_gnutls-0.4.2.1-change-module-name.diff
 Patch1:		mod_gnutls-apu13.diff
 Patch2:		mod_gnutls-no_rpath.diff
+Patch3:		mod_gnutls-0.5.4-gnutls-2.8.patch
 Requires(post): gnutls
 Requires(pre): rpm-helper
 Requires(postun): rpm-helper
@@ -33,11 +34,11 @@ encryption for Apache HTTPD. It is similar to mod_ssl in purpose, but does not
 use OpenSSL.
 
 %prep
-
 %setup -q -n %{mod_name}-%{version}
 %patch0 -p1
 %patch1 -p0
 %patch2 -p0
+%patch3 -p0
 
 cp %{SOURCE1} %{mod_conf}
 
