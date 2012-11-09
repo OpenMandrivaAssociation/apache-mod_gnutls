@@ -1,0 +1,24 @@
+diff -Naur --exclude '*~' mod_gnutls-0.4.2.1/src/Makefile.am mod_gnutls-0.4.2.1-change-module-name/src/Makefile.am
+--- mod_gnutls-0.4.2.1/src/Makefile.am	2007-11-28 19:48:05.000000000 +0100
++++ mod_gnutls-0.4.2.1-change-module-name/src/Makefile.am	2008-02-18 16:35:09.000000000 +0100
+@@ -1,14 +1,14 @@
+-CLEANFILES = .libs/libmod_gnutls *~
++CLEANFILES = .libs/mod_gnutls *~
+ 
+-libmod_gnutls_la_SOURCES = mod_gnutls.c gnutls_io.c gnutls_cache.c gnutls_config.c gnutls_hooks.c 
++mod_gnutls_la_SOURCES = mod_gnutls.c gnutls_io.c gnutls_cache.c gnutls_config.c gnutls_hooks.c 
+ #gnutls_lua.c
+-libmod_gnutls_la_CFLAGS = -Wall ${MODULE_CFLAGS} ${LUA_CFLAGS}
+-libmod_gnutls_la_LDFLAGS = -rpath ${AP_LIBEXECDIR} -module -avoid-version ${MODULE_LIBS} ${LUA_LIBS}
++mod_gnutls_la_CFLAGS = -Wall ${MODULE_CFLAGS} ${LUA_CFLAGS}
++mod_gnutls_la_LDFLAGS = -rpath ${AP_LIBEXECDIR} -module -avoid-version ${MODULE_LIBS} ${LUA_LIBS}
+ 
+-lib_LTLIBRARIES = libmod_gnutls.la
++lib_LTLIBRARIES = mod_gnutls.la
+ 
+ make_so: $(lib_LTLIBRARIES)
+-	@if test ! -L mod_gnutls.so ; then ln -s .libs/libmod_gnutls.so mod_gnutls.so ; fi
++	@if test ! -L mod_gnutls.so ; then ln -s .libs/mod_gnutls.so mod_gnutls.so ; fi
+ 
+ clean: 
+ 	rm -f mod_gnutls.so

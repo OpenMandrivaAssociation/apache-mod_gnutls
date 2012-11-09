@@ -1,0 +1,11 @@
+--- m4/apr_memcache.m4	2008-08-10 13:57:46.000000000 +0200
++++ m4/apr_memcache.m4.oden	2008-08-10 13:59:11.000000000 +0200
+@@ -52,7 +52,7 @@
+     [
+ 	APR_MEMCACHE_LIBS="`apu-1-config --link-ld`"
+ 	if test -n "$apr_memcache_libdir"; then
+-	    APR_MEMCACHE_LIBS="-R$apr_memcache_libdir -L$apr_memcache_libdir $APR_MEMCACHE_LIBS"
++	    APR_MEMCACHE_LIBS="-L$apr_memcache_libdir $APR_MEMCACHE_LIBS"
+ 	fi
+ 	APR_MEMCACHE_CFLAGS="`apu-1-config --includes`"
+     ]
