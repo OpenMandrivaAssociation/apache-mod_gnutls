@@ -9,7 +9,7 @@ Version:	0.5.10
 Release:	%mkrel 2
 Group:		System/Servers
 License:	Apache License
-URL:		http://www.outoforder.cc/projects/apache/mod_gnutls/
+URL:		https://www.outoforder.cc/projects/apache/mod_gnutls/
 Source0:	http://www.outoforder.cc/downloads/mod_gnutls/%{mod_name}-%{version}.tar.bz2
 Source1:	%{mod_conf}
 Patch0:		mod_gnutls-0.4.2.1-change-module-name.diff
