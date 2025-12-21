@@ -22,6 +22,11 @@ Requires(pre):	apache-conf >= 2.2.0
 Requires(pre):	apache >= 2.2.0
 Requires:	apache-conf >= 2.2.0
 Requires:	apache >= 2.2.0
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	apr-util-devel >= 1.3.0
 BuildRequires:	gnutls-devel >= 2.10.0
